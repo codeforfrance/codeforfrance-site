@@ -4,7 +4,9 @@
 
  var qs = require('querystring'),
      config = require('../config'),
-     request = require('request');
+     request = require('request'),
+     _ = require('underscore'),
+     User = require('../models/user');
 
 // Redirect to GitHub to ask authorization for the app
 exports.githubAuthorize = function(req, res) {
@@ -41,14 +43,16 @@ exports.githubCallback = function(req, res) {
       console.error('Error while authenticating with GitHub: ', err || body.error);
       return res.redirect('/?auth=error');
     } else {
+      // Auth flow finished!
+
       // Save the access token and get the user profile
       var accessToken = body.access_token;
 
       request.get({
-        url: 'https://api.github.com/user/emails',
+        url: 'https://api.github.com/user',
         headers: {
           'Authorization': 'token ' + accessToken,
-          'User-Agent': 'Node.js codeforfrance'
+          'User-Agent': 'Node.js Server codeforfrance'
         }
       }, function(err, response, body) {
         if (err) {
@@ -56,10 +60,66 @@ exports.githubCallback = function(req, res) {
           return res.redirect('/');
         }
 
-        user = JSON.parse(body);
+        ghInfo = JSON.parse(body);
+        var user = new User({
+          username: ghInfo.username,
+          name: ghInfo.name,
+          email: ghInfo.email,
+          ghId: ghInfo.id,
+          ghLogin: ghInfo.login,
+          ghAccessToken: accessToken
+        });
 
-        res.redirect('/?auth=success');
+        if (!user.email) {
+          // Get all users emails from another call to GitHub API...
+          request.get({
+            url: 'https://api.github.com/user/emails',
+            headers: {
+              'Authorization': 'token ' + accessToken,
+              'User-Agent': 'Node.js Server codeforfrance'
+            }
+          }, function(err, response, body) {
+            if (err) {
+              console.error('Error while getting user info.');
+              return res.redirect('/');
+            }
+
+            ghInfo = JSON.parse(body);
+            _.each(ghInfo, function(email) {
+              if (email.primary) {
+                return user.email = email.email;
+              }
+            });
+            return saveUser(user, req, res);
+          });
+
+        } else {
+          return saveUser(user, req, res);
+        }
       });
+    }
+  });
+};
+
+var saveUser = function(user, req, res) {
+  User.findOne({
+    ghId: user.ghId
+  }, function(err, user) {
+    if (err || !user) {
+      // New user
+      user.save(function(err, user) {
+        if (err) {
+          res.redirect('/?auth=error');
+        } else {
+          // Save the user in the session
+          req.session.user = user;
+          res.redirect('/?auth=success');
+        }
+      });
+    } else {
+      // User already exists, update the session
+      req.session.user = user;
+      return res.redirect('/?auth=success');
     }
   });
 };

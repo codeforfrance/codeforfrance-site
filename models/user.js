@@ -4,5 +4,9 @@ var User = mongoose.model('User', {
   username: String,
   email: String,
   name: String,
-  githubId: Number
+  ghId: Number,
+  ghLogin: String,
+  ghAccessToken: String
 });
+
+module.exports = User;
