@@ -104,8 +104,8 @@ exports.githubCallback = function(req, res) {
 var saveUser = function(user, req, res) {
   User.findOne({
     ghId: user.ghId
-  }, function(err, user) {
-    if (err || !user) {
+  }, function(err, existingUser) {
+    if (err || !existingUser) {
       // New user
       user.save(function(err, user) {
         if (err) {
