@@ -1,3 +1,2 @@
-htdocs/node_modules/*
+node_modules/*
 .DS_Store
-htdocs/config.js
