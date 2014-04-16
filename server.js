@@ -30,7 +30,7 @@ mongoose.connection.once('open', function() {
   app.get('/auth/github/callback', auth.githubCallback);
 
   // Start the server
-  app.listen(3000, function() {
+  app.listen(8080, function() {
     console.log('Application listening on port 3000. Go to http://localhost:3000 to visit the website.');
   });
 });
