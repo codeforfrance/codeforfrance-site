@@ -1,0 +1,16 @@
+{
+  "name": "codeforfrance-website",
+  "version": "0.0.1",
+  "author": "Code for France",
+  "description": "Implementons la France du 21eme siecle",
+  "homepage": "http://codeforfrance.io",
+  "engines": {
+    "node": ">0.8"
+  },
+  "dependencies": {
+    "express": "4.0.0",
+    "mongoose": "3.8.8",
+    "underscore": "1.6.0",
+    "request": "2.34.0"
+  }
+}
