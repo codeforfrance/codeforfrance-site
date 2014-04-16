@@ -1,0 +1,190 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.cff {
+  background-color: #FFF;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 300;
+  text-align: center;
+  color: #202020;
+}
+
+.cff-container {
+  padding: 40px 10px 40px;
+}
+
+.cff-logo {
+  display: inline-block;
+  width: 180px;
+  height: 180px;
+  margin-bottom: 40px;
+}
+
+h1 {
+  margin-bottom: 50px;
+  font-size: 34px;
+  line-height: 50px;
+  color: #292F33;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.buttons-text-separator {
+  display: inline-block;
+  margin: 0 15px;
+  font-size: 24px;
+  line-height: 25px;
+  color: #292F33;
+}
+
+.button {
+  display: inline-block;
+  height: 50px;
+  padding: 0 15px;
+  margin-bottom: 20px;
+  border-radius: 7px;
+  border: 1px solid #838383;
+  line-height: 48px;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  -webkit-transition: color .125s ease, background-color .125s ease;
+  transition: color .125s ease, background-color .125s ease;
+}
+
+.button:active {
+  -webkit-transform: translateY(1px);
+  -ms-transform: translateY(1px);
+  transform: translateY(1px);
+}
+
+.button-twitter {
+  border-color: #5E9FCA;
+  color: #5E9FCA;
+}
+
+.button-twitter:hover {
+  background-color: #5E9FCA;
+  color: #FFF;
+}
+
+.button-github {
+  border-color: #303030;
+  color: #303030;
+}
+
+.button-github:hover {
+  background-color: #303030;
+  color: #FFF;
+}
+
+.success-text {
+  display:none;
+}
+
+.button-success,
+.button-success:hover,
+.button-success:active {
+  border-color: #92CD4D;
+  background-color: #92CD4D;
+  color: #FFF;
+  cursor: default;
+}
+
+a.button-success span {
+  display: none;
+}
+
+a.button-success span.success-text {
+  display: inline;
+}
+
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url(../images/sprite@2x.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 40px 60px;
+  background-size: 40px 60px;
+}
+
+.icon-twitter   { background-position: 0 0; }
+.icon-github    { background-position: 0 -20px; }
+
+.button .icon {
+  margin-bottom: -4px;
+  margin-right: 10px;
+}
+
+.button:hover .icon-twitter, .button-success .icon-twitter  { background-position: -20px 0; }
+.button:hover .icon-github, .button-success .icon-github    { background-position: -20px -20px; }
+
+@media (max-width: 600px) {
+  .buttons-text-separator {
+    display: none;
+  }
+  .buttons-group .button {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 600px) and (min-height: 480px) {
+  .cff-container {
+    position: absolute;
+    min-width: 600px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    -ms-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+  }
+  .buttons-social {
+    min-width: 560px;
+  }
+}
