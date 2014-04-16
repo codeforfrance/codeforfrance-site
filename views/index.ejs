@@ -16,10 +16,21 @@
     <h1>Implémentons la France du 21ème siècle.</h1>
     <p>Soutenir le projet</p>
     <div class="buttons-group buttons-social">
-      <a class="button button-twitter" href="#"><i class="icon icon-twitter"></i>Suivez-nous sur Twitter</a>
+      <a class="button button-twitter" href="https://twitter.com/intent/follow?screen_name=codeforfrance&lang=fr"><i class="icon icon-twitter"></i>Suivez-nous sur Twitter</a>
       <span class="buttons-text-separator">ou</span>
-      <a class="button button-github" href="/auth/github"><i class="icon icon-github"></i><span>Inscrivez-vous via Github</span><span class="success-text">Inscription confirmée!</span></a>
+      <a class="button button-github <% if (locals.auth) { %> button-success <% } %>" href="/auth/github"><i class="icon icon-github"></i><span>Inscrivez-vous via Github</span><span class="success-text">Inscription confirmée!</span></a>
     </div>
   </div>
+  <script src="https://platform.twitter.com/widgets.js"></script>
+  <script>
+    twttr.ready(function (twttr) {
+      // Add class to the Twitter button after following the account
+      twttr.events.bind('follow', function(intent) {
+        if (intent && intent.data.user_id === "484733186" && intent.type === 'follow') {
+          intent.target.className = intent.target.className + ' button-success';
+        }
+      });
+    });
+  </script>
 </body>
 </html>

@@ -109,17 +109,17 @@ var saveUser = function(user, req, res) {
       // New user
       user.save(function(err, user) {
         if (err) {
-          res.redirect('/?auth=error');
+          res.redirect('/');
         } else {
           // Save the user in the session
           req.session.user = user;
-          res.redirect('/?auth=success');
+          res.redirect('/');
         }
       });
     } else {
       // User already exists, update the session
       req.session.user = user;
-      return res.redirect('/?auth=success');
+      return res.redirect('/');
     }
   });
 };

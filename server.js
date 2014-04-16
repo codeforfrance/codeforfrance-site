@@ -9,11 +9,6 @@ var express = require('express'),
 mongoose.connection.once('open', function() {
   var app = express();
 
-  // Views
-  app.set('views', __dirname + '/views');
-  app.engine('html', require('ejs').renderFile);
-  app.use(express.static(__dirname + '/public'));
-
   // Middlewares
   app.use(cookieParser());
   app.use(session({
@@ -21,9 +16,14 @@ mongoose.connection.once('open', function() {
     key: 'sid'
   }));
 
+  // Views
+  app.set('views', __dirname + '/views');
+  app.engine('ejs', require('ejs').renderFile);
+  app.use(express.static(__dirname + '/public'));
+
   // Routes
   app.get('/', function(req, res) {
-    res.render('index.html');
+    res.render('index.ejs', { auth: !!req.session.user });
   });
 
   app.get('/auth/github', auth.githubAuthorize);
