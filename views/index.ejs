@@ -12,13 +12,18 @@
 </head>
 <body class="cff">
   <div class="cff-container">
-    <img class="cff-logo" src="images/code-for-france-logo@2x.png"/>
+    <img class="cff-logo" src="images/code-for-france-logo@2x.png" alt="Code For France Logo"/>
     <h1>Implémentons la France du 21ème siècle.</h1>
     <p>Soutenir le projet</p>
     <div class="buttons-group buttons-social">
-      <a class="button button-twitter" href="https://twitter.com/intent/follow?screen_name=codeforfrance&lang=fr"><i class="icon icon-twitter"></i>Suivez-nous sur Twitter</a>
-      <span class="buttons-text-separator">ou</span>
+      <a class="button button-twitter" href="https://twitter.com/intent/follow?screen_name=codeforfrance&lang=fr"><i class="icon icon-twitter"></i><span>Suivez-nous sur Twitter</span><span class="success-text">Vous êtes abonné</span></a>
+      <!-- <span class="buttons-text-separator">ou</span> -->
       <a class="button button-github <% if (locals.auth) { %> button-success <% } %>" href="/auth/github"><i class="icon icon-github"></i><span>Inscrivez-vous via Github</span><span class="success-text">Inscription confirmée!</span></a>
+    </div>
+    <div class="cff-footer">
+      <a class="footer-link" class="footer-link" href="https://twitter.com/codeforfrance">Twitter</a>
+      <img class="footer-logo" src="images/favicon.png"/>
+      <a class="footer-link" class="footer-link" href="https://github.com/codeforfrance">Github</a>
     </div>
   </div>
   <script src="https://platform.twitter.com/widgets.js"></script>

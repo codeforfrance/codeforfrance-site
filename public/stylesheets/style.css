@@ -41,6 +41,12 @@ table {
 	border-spacing: 0;
 }
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 .cff {
   background-color: #FFF;
   font-family: 'Source Sans Pro', sans-serif;
@@ -83,11 +89,15 @@ p {
 
 .button {
   display: inline-block;
+  min-width: 235px;
   height: 50px;
   padding: 0 15px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 20px;
   border-radius: 7px;
   border: 1px solid #838383;
+  text-align: center;
   line-height: 48px;
   font-size: 16px;
   font-weight: 400;
@@ -129,6 +139,7 @@ p {
 .button-success,
 .button-success:hover,
 .button-success:active {
+  pointer-events: none;
   border-color: #92CD4D;
   background-color: #92CD4D;
   color: #FFF;
@@ -164,24 +175,42 @@ a.button-success span.success-text {
 .button:hover .icon-twitter, .button-success .icon-twitter  { background-position: -20px 0; }
 .button:hover .icon-github, .button-success .icon-github    { background-position: -20px -20px; }
 
-@media (max-width: 620px) {
+.cff-footer {
+  padding: 80px 0 0 0;
+}
+
+.footer-link {
+  font-size: 14px;
+  font-weight: 400;
+  color: #B0B0B0;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #909090;
+  text-decoration: underline;
+}
+
+.footer-logo {
+  width: 16px;
+  height: 16px;
+  margin-bottom: -3px;
+}
+
+/*@media (max-width: 620px) {
   .buttons-text-separator {
     display: none;
   }
-  .buttons-group .button {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-}
+}*/
 
-@media (min-width: 620px) and (min-height: 520px) {
+@media (min-width: 620px) and (min-height: 620px) {
   .cff-container {
     position: absolute;
     width: 600px;
-    height: 450px;
+    height: 600px;
     top: 50%;
     left: 50%;
-    margin: -265px 0 0 -310px ;
+    margin: -300px 0 0 -300px ;
   }
   .buttons-social {
     min-width: 560px;
