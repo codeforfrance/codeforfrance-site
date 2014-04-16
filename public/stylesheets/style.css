@@ -164,7 +164,7 @@ a.button-success span.success-text {
 .button:hover .icon-twitter, .button-success .icon-twitter  { background-position: -20px 0; }
 .button:hover .icon-github, .button-success .icon-github    { background-position: -20px -20px; }
 
-@media (max-width: 600px) {
+@media (max-width: 620px) {
   .buttons-text-separator {
     display: none;
   }
@@ -174,15 +174,14 @@ a.button-success span.success-text {
   }
 }
 
-@media (min-width: 600px) and (min-height: 480px) {
+@media (min-width: 620px) and (min-height: 520px) {
   .cff-container {
     position: absolute;
-    min-width: 600px;
+    width: 600px;
+    height: 450px;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate3d(-50%,-50%,0);
-    -ms-transform: translate3d(-50%,-50%,0);
-    transform: translate3d(-50%,-50%,0);
+    margin: -265px 0 0 -310px ;
   }
   .buttons-social {
     min-width: 560px;
