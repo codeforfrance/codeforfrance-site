@@ -14,7 +14,7 @@ exports.githubAuthorize = function(req, res) {
 
   var authParams = qs.stringify({
     client_id: config.github.clientId,
-    scope: 'user'
+    scope: 'user:email'
   });
   // TODO: generate state to check after callback
 
