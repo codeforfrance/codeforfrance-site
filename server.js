@@ -34,7 +34,13 @@ mongoose.connection.once('open', function() {
     console.log('Application listening on port 3000. Go to http://localhost:3000 to visit the website.');
   });
 });
+mongoose.connection.on("error", (e) => {
+  console.error(e);
+})
 
 // Connect to MongoDB
 console.info('Connecting to MongoDB (' + config.database.uri + ') ...');
-mongoose.connect(config.database.uri);
+mongoose.connect(config.database.uri, {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+});
